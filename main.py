@@ -6,7 +6,7 @@ app = FastAPI()
 
 class addbitcoin():
     
-    private_key = sha256('savdat ghbbar ali amirkabir ghooli chaldhooz')
+    private_key = sha256('safvdsdat ghbbar ali amirkabir ghooli chaldhooz')
     public_key=privtopub(private_key)
     address=pubtoaddr(public_key)
     
