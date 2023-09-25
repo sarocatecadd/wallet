@@ -6,7 +6,8 @@ app = FastAPI()
 
 class addbitcoin():
     
-    public_key="030b25276b83bc5a125cd060c9487db4bab7491534f5146a529afd715385a84829"
+    private_key = sha256('savdat ghbbar ali amirkabir ghooli chaldhooz')
+    public_key=privtopub(private_key)
     address=pubtoaddr(public_key)
     
     
@@ -20,7 +21,7 @@ def index():
 def generar_address():
     return {
         "address":addbitcoin.address,
-        "public_key":addbitcoin.public_key           
+        "public_key":addbitcoin.public_key
     }
 
 @app.post("/api/address")
@@ -31,4 +32,3 @@ def addpublic_key():
 @app.put("/api/address")
 def updatepublic_key():
     return {"message": f"public_key {addbitcoin.public_key} insert to"}       
-
