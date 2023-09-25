@@ -6,12 +6,17 @@ app = FastAPI()
 
 class addbitcoin():
     
-    private_key = sha256('safvdsdat ghbbar ali amirkabir ghooli chaldhooz')
-    public_key=privtopub(private_key)
+    public_key="030b25276b83bc5a125cd060c9487db4bab7491534f5146a529afd715385a84829"
     address=pubtoaddr(public_key)
-    
-    
-    
+
+    public_key1 = "030b25276b83bc5a125cd060c9487db4bab7491534f5146a529afd715385a84829"
+    address1 = pubtoaddr(public_key1)
+
+    multi_sig = mk_multisig_script(public_key, public_key1, 1, 2)
+    multi_sig_addr = scriptaddr(multi_sig)
+
+   
+
 
 @app.get("/")
 def index():
@@ -20,8 +25,11 @@ def index():
 @app.get("/api/address")
 def generar_address():
     return {
+        "public_key":addbitcoin.public_key,
         "address":addbitcoin.address,
-        "public_key":addbitcoin.public_key
+        "address1" : addbitcoin.multi_sig_addr
+        
+        
     }
 
 @app.post("/api/address")
